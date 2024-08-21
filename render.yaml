@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: yii2-app
+    env: php
+    plan: free
+    buildCommand: "composer install --no-interaction --prefer-dist"
+    startCommand: "php yii serve --port $PORT --docroot=web/"
+    envVars:
+      - key: APP_ENV
+        value: production
+    autoDeploy: true
+    runtime: php
