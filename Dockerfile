@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    && docker-php-ext-install pdo mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo mbstring exif pcntl bcmath gd zip
 
 # Устанавливаем Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -28,4 +28,3 @@ EXPOSE 80
 
 # Запускаем встроенный сервер PHP на порту 80
 CMD ["php", "-S", "0.0.0.0:80", "-t", "web/"]
-RUN docker-php-ext-install pdo pdo_sqlite mbstring exif pcntl bcmath gd
